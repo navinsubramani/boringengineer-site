@@ -1,0 +1,103 @@
+.ss-container {
+  width: 100%;
+  max-width: 1200px; /* Optional: limits container width for large screens */
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.ss-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.ss-card {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ss-card__header {
+  background: var(--ss-accent, #25c2a0);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 2px solid #25c2a0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.ss-card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ss-card__icon {
+  font-size: 1em;
+  margin-right: 0.2em;
+}
+
+.ss-card__body.ss-card__body--float {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  min-height: 120px;
+  width: 100%;
+  padding: 2rem 1rem 1.5rem 1rem;
+}
+
+.ss-logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.ss-logo {
+  transition: transform 0.6s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.ss-logoLink:hover .ss-logo {
+  transform: scale(1.08);
+}
+
+.ss-logo--float {
+  animation: ss-floatLogo var(--ss-dur, 8s) ease-in-out infinite;
+  animation-delay: var(--ss-delay, 0s);
+}
+
+@keyframes ss-floatLogo {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(var(--ss-amp, 8px)); }
+  50%  { transform: translateY(0); }
+  80%  { transform: translateY(calc(-1 * var(--ss-amp, 8px))); }
+  100% { transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .ss-grid {
+    grid-template-columns: 1fr !important; /* 1 column on mobile */
+    gap: 2rem !important;
+  }
+  .ss-card {
+    max-width: 100% !important;
+  }
+  .ss-card__body.ss-card__body--float {
+    gap: 1.2rem;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+  }
+}
