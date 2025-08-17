@@ -4,10 +4,19 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+// Custom Fields are provided to your site via `useDocusaurusContext`
+// ASSETS_BASE is used to point to the assets server for images and other static content
+const ASSETS_BASE = process.env.ASSETS_BASE ?? "https://siteassets.auxon.in";
+
 const config: Config = {
   title: 'Boring Engineer',
   tagline: 'Personal site of Navin Subramani, where Navin blogs and shares his experiences in engineering, tech, and life.',
   favicon: 'img/boring-engineer-favicon.ico',
+
+  // Put you own values here (NOT a top level "confgig")
+  customFields: {
+    ASSETS_BASE,
+  },
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -140,6 +149,7 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
 };
 
 export default config;

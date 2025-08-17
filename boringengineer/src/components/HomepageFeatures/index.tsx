@@ -152,7 +152,7 @@ export function Journey() {
         {/* Example timeline entries, replace with your own */}
           <div className={styles.journeyItem}>
           <span className={styles.journeyYear}>2024 <span>🤖</span></span>
-          <span className={styles.journeyDesc}>Heading the AI team at Soliton. <span className={styles.themeGreen}>Big beliver in AI</span> and its potential to transform the world—and the Test & Measurement industry in particular.</span>
+          <span className={styles.journeyDesc}>Heading the AI team at Soliton. <span className={styles.themeGreen}>Big believer in AI</span> and its potential to transform the world—and the Test & Measurement industry in particular.</span>
         </div>
         <div className={styles.journeyItem}>
           <span className={styles.journeyYear}>2022 <span>👐</span></span>

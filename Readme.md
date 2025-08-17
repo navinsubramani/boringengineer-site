@@ -55,11 +55,9 @@ curl http://<registry-address:port>/v2/
 ```
 
 # To Do
-- [ ] Add my skills section with icons and hyperlinks to relevant pages. This should be a visually appealing section that highlights my expertise.
 - [ ] Port all the blogs from the old site to this new Docusaurus site. This will ensure that all my previous writings are accessible in the new format.
 - [ ] Add a DIY section to showcase my projects and experiments. This section should include detailed descriptions and images of my work.
 - [ ] Find a way to host the images and other static assets on a local CDN server, but outside this site. This will improve loading times and reduce bandwidth usage.
-- [ ] Create a Docker image and compose for the site, with the clear automatin and documentation on how to run it. This will make it easier for others to deploy the site locally or on their servers.
 - [ ] Create redirects for the failed links from the old site to the new site. This will ensure that visitors can still access the site even if the content is not moved or broken.
 
 # Take Down Old Site

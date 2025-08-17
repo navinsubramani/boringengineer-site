@@ -1,19 +1,14 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+LabVIEW:
+  label: LabVIEW
+  permalink: /labview
+  description: LabVIEW is a development environment for creating test and measuremenet applications that interact with hardwares. LabVIEW is a closed source product developed by National Instruments, but it also has a community edition that is free to use. Under this tag, you will find articles related to LabVIEW programming, best practices, and tips for developing applications in LabVIEW.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+Software Engineering:
+  label: Software Engineering
+  permalink: /software-engineering
+  description: Software engineering is the application of engineering principles to software development in a methodical way. It involves the design, development, testing, and maintenance of software systems. Under this tag, you will find articles related to software design patterns, best practices, and methodologies that can be applied in various programming environments.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
-
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+DIY:
+  label: DIY
+  permalink: /diy
+  description: DIY (Do It Yourself) refers to the practice of creating, building, or repairing things on your own, often using readily available materials. This tag includes articles that provide step-by-step guides, tips, and inspiration for various DIY projects, from electronics, home improvement to crafting and beyond.

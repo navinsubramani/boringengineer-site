@@ -37,7 +37,7 @@
 }
 
 .ticker__item:hover { opacity: 0.9; }
-.ticker__item:focus { box-shadow: 0 0 0 2px rgba(255,255,255,0.7); }
+.ticker__item:focus { box-shadow: 0 0 0 2px ; }
 
 @keyframes ticker-slide {
   from { transform: translateX(0); }
