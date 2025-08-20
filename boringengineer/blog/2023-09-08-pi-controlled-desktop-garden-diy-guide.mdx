@@ -1,0 +1,79 @@
+---
+slug: pi-controlled-desktop-garden-diy-guide
+title: DIY Guide - Pi Controlled & Monitored Desktop Garden
+authors: navinsubramani
+tags: [DIY]
+---
+
+In the age of smart homes, why not have a smart garden? This guide will walk you through creating a **Pi Controlled & Monitored Desktop Garden** that not only looks great but also helps you learn about electronics, programming, and gardening.
+
+<!-- truncate -->
+
+**Gardening enthusiasts and tech-savvy individuals**, get ready to embark on a journey where nature meets technology! In this do-it-yourself (DIY) guide, I will walk you through the process of creating your very own **Raspberry Pi–controlled desktop garden**. This project allows you to monitor and control your plants' environmental conditions, ensuring they thrive with precision. With clear instructions and a dash of creativity, you'll have your own green oasis right on your desk. Let's get started!
+
+Here is a short demo from Anannya on Pi Controlled Desktop Garden
+
+<div className="responsive-video">
+   <AssetVideo path="/media/uploads/2023/09/VIDEO-2023-09-08-18-21-09.mp4"/>
+</div>
+
+### System Diagram
+
+<AssetImg path="/media/uploads/2023/09/desktop-garden-system-diagram-1024x497.png" alt="Desktop Garden System Diagram" />
+*Desktop Garden System Diagram*
+
+### What You'll Need
+
+To begin this exciting project, gather the following materials:
+
+1. Raspberry Pi 3B+
+2. <a href="https://www.amazon.com/WayinTop-Automatic-Irrigation-Watering-Capacitive/dp/B07TMVNTDK/ref=sr_1_11?hvadid=190480806186&hvdev=c&hvlocphy=9001880&hvnetw=g&hvqmt=e&hvrand=9455202391857626053&hvtargid=kwd-317572890378&hydadcr=24600_9648833&keywords=raspberry+pi+soil+moisture+sensor&qid=1686106761&sr=8-11" target="_new" rel="noopener"><strong>4 Channel 5V Relay Module</strong></a>
+3. <a href="https://www.amazon.com/WayinTop-Automatic-Irrigation-Watering-Capacitive/dp/B07TMVNTDK/ref=sr_1_11?hvadid=190480806186&hvdev=c&hvlocphy=9001880&hvnetw=g&hvqmt=e&hvrand=9455202391857626053&hvtargid=kwd-317572890378&hydadcr=24600_9648833&keywords=raspberry+pi+soil+moisture+sensor&qid=1686106761&sr=8-11" target="_new" rel="noopener"><strong>4 Mini Water Pumps</strong></a>
+4. <a href="https://www.amazon.com/WayinTop-Automatic-Irrigation-Watering-Capacitive/dp/B07TMVNTDK/ref=sr_1_11?hvadid=190480806186&hvdev=c&hvlocphy=9001880&hvnetw=g&hvqmt=e&hvrand=9455202391857626053&hvtargid=kwd-317572890378&hydadcr=24600_9648833&keywords=raspberry+pi+soil+moisture+sensor&qid=1686106761&sr=8-11" target="_new" rel="noopener"><strong>4M Vinyl Tubing (Material: PVC)</strong></a>
+5. <a href="https://www.amazon.com/WayinTop-Automatic-Irrigation-Watering-Capacitive/dp/B07TMVNTDK/ref=sr_1_11?hvadid=190480806186&hvdev=c&hvlocphy=9001880&hvnetw=g&hvqmt=e&hvrand=9455202391857626053&hvtargid=kwd-317572890378&hydadcr=24600_9648833&keywords=raspberry+pi+soil+moisture+sensor&qid=1686106761&sr=8-11" target="_new" rel="noopener"><strong>4 Capacitive Soil Moisture Sensors (TL555C)</strong></a>
+6. <a href="https://www.amazon.com/gp/product/B09FDGTKLX/ref=ppx_yo_dt_b_asin_title_o09_s01?ie=UTF8&psc=1" target="_new" rel="noopener"><strong>UV & Ambient Light Sensor (LTR390)</strong></a>
+7. <a href="https://www.amazon.com/Hilitchi-DS18B20-Waterproof-Temperature-Sensors/dp/B018KFX5X0?th=1" target="_new" rel="noopener"><strong>DS18B20 Temperature Sensor</strong></a>
+8. <a href="https://www.adafruit.com/product/4471" target="_new" rel="noopener"><strong>MCP221A ADC</strong> to convert moisture sensor analog to digital values</a>
+9. <a href="https://www.amazon.com/dp/B07TRKXX9D?ref=ppx_yo2ov_dt_b_product_details&th=1" target="_new" rel="noopener"><strong>DOMMIA Grow Light</strong></a>
+10. <a href="https://www.homedepot.com/p/myTouchSmart-Indoor-Digital-24-Hour-Fashion-Timer-with-Cloth-Cover-2-Settings-1-Polarized-Outlet-66985/324058579" target="_new" rel="noopener"><strong>myTouchSmart Indoor Digital Timer Switch</strong></a>
+11. Prototype PCBs, Male–Male, Male–Female Wires, Solder Kit (as required)
+
+### Hardware Connections
+
+<AssetImg path="/media/uploads/2023/09/desktop-garden-hardware-connections-1024x576.png" alt="desktop garden hardware connections" />
+*Desktop Garden Hardware Connections*
+
+Now, let's connect the hardware components to create your smart desktop garden. Follow these steps:
+
+1. Connect the sensors with digital output directly to the Raspberry Pi through I2C or One Wire pins.
+2. For the analog sensor (Moisture), use the MCP221A to convert it into digital data, and then connect it to the USB interface of the Raspberry Pi.
+3. Control the water supply with the mini motor pump, and use the relay module connected to the Raspberry Pi's GPIO pins to turn the pump on and off.
+4. Manage UV light exposure by using a timer switch to turn the UV light on and off during specific times of the day.
+5. Your Raspberry Pi will run a Python program (check the <a href="https://github.com/navinsubramani/ai-controlled-dektop-garden" target="_new" rel="noopener">GitHub repo</a>) to acquire data from the sensors and control the relay.
+
+### Streaming Plant Health Data to the Cloud
+
+To keep track of your plants' health, we'll set up data streaming to the cloud. Follow these steps:
+
+1. The Raspberry Pi will run a Python program that reads sensor values every minute and publishes the data to a web service hosted on Heroku through REST endpoints.
+2. The server Python code, using the Quart framework, will receive this health data. You can find the code in the same GitHub repository.
+3. The Heroku web service saves the received data to a file for analysis and tracking.
+
+### Viewing Live Data in the Dashboard
+
+Now, you can visualize your plants' health data with a user-friendly dashboard. Here's how:
+
+1. The Heroku web service provides an endpoint for clients to access the health trends of your plants.
+2. Install Grafana on any machine (cloud or client) and create a dashboard to view different sensor trends over time.
+
+### Technology Used
+
+Here's a quick overview of the technologies used in this project:
+
+- **Front End:** Grafana (for visualizing time-series sensor data)
+- **Backend:** Python 3.11, Quart framework for the web service (hosted on Heroku)
+- **Hardware Controller:** Raspberry Pi 3 B+ and Relay Module
+- **Sensors:** Moisture Sensor, Temperature Sensor, UV sensor
+- **Actuators:** UV light, DC Motor
+
+Now that you have all the information and materials you need, it's time to roll up your sleeves and create your Pi-controlled desktop garden. Enjoy watching your plants thrive as you combine nature with the power of Raspberry Pi technology. **Happy gardening!**

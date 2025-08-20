@@ -15,3 +15,12 @@ export const AssetIframe = (
 export const AssetLink = (
   { path, children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement> & { path: string }
 ) => <a href={`${useBase()}${path}`} {...props}>{children}</a>;
+
+export const AssetVideo = ({ path, ...props }) => {
+  const base = (useDocusaurusContext().siteConfig.customFields as any).ASSETS_BASE as string;
+  return (
+    <div className="responsive-video">
+      <video controls src={`${base}${path}`} {...props}></video>
+    </div>
+  );
+};

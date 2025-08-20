@@ -1,3 +1,16 @@
+/* Responsive video wrapper */
+.responsive-video {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+.responsive-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to

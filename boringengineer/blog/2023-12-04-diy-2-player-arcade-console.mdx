@@ -1,0 +1,162 @@
+---
+slug: diy-2-player-arcade-console
+title: DIY Guide - 2 Player Arcade Gaming Console
+authors: navinsubramani
+tags: [DIY]
+---
+
+In the world of gaming, nothing beats the nostalgia of classic arcade games. Building your own **2‑player Arcade Gaming Console** is a fantastic way to relive those memories while also creating a unique piece of furniture for your home. This guide will walk you through the process of building a tabletop arcade console that can accommodate two players, using readily available materials and tools.
+
+<!-- truncate -->
+
+# Introduction
+
+Hello, fellow gamers and DIY enthusiasts! Today, I'm thrilled to share the process of building a **2‑player Arcade Gaming Console**. This project not only rekindled my childhood memories but also challenged creativity and technical skills. I chose to create a **tabletop** version for its space‑saving convenience and adaptability to various table heights.
+
+**Acknowledgment**: First off, a big shoutout to ChatGPT for helping me turn my notes and ideas into this comprehensive blog post. *\[My Edits: The above is written by ChatGPT as well]*
+
+# Part 1: The Electronic and Software Side
+
+#### Starting with a Prototype
+
+Before diving into the full build, I began with a prototype focusing on the electronics and software.
+
+#### Materials for the Prototype
+
+1. Raspberry Pi
+2. Card Reader (for installing RetroPie OS)
+3. Arcade Buttons, Joystick & Controller
+   • Useful resource: [Slagcoin](https://slagcoin.com/joystick.html)
+   • My choice: [Amazon Purchase](https://www.amazon.com/gp/product/B07H7GF337)
+4. Prototype Board (repurposed vegetable cutter)
+5. Monitor
+
+import styles from '../src/css/gallery.module.css';
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Buttons-And-Joystick.jpg" alt="Buttons And Joystick" />
+  <AssetImg path="/media/uploads/2023/12/RetroPie.png" alt="RetroPie" />
+  <AssetImg path="/media/uploads/2023/12/RaspberryPi.png" alt="RaspberryPi" />
+</div>
+
+#### The Build Process
+
+This process probably takes \~4 hours in total if done right.
+
+* Drilling 1.1‑inch holes into the vegetable‑cutter board for six buttons and a joystick.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Vegetable-Cutter-Prototype-Board-scaled.jpg" alt="Vegetable Cutter Prototype Board" />
+  <AssetImg path="/media/uploads/2023/12/Vegetable-Cutter-Prototype-Board_Buttons-Mounted.jpg" alt="Prototype Board with Buttons Mounted" />
+</div>
+
+* Assembling the buttons and joystick and connecting them to the USB controller.
+* Installing RetroPie OS on the Raspberry Pi (Installation guide: [RetroPie Documentation](https://retropie.org.uk/docs/First-Installation/)).
+* Configuring the Pi (Wi‑Fi and location settings).
+* Downloading ROMs from sites like [MAMEDEV](https://www.mamedev.org/roms/) and setting up the emulation folders.
+
+#### Configuring Controllers
+
+For a two‑player setup, I used a PS4 controller along with the custom‑built one. The configuration was straightforward, covering the primary buttons (A, B, X, Y, Start, Select, and Directions).
+
+<AssetImg path="/media/uploads/2023/12/Arcade-Game-Prototype_Finished.jpg" alt="Arcade Game Console Prototype Finished" />
+
+# Part 2: The Woodwork
+
+### Transitioning from Prototype to Product
+
+With the electronics & software sorted, it was time to focus on the console's wooden structure.
+
+### Materials for the Console
+
+1. All items from the prototype, including a **19‑inch Dell** monitor.
+2. Speakers, Extension Power Cord, Power Tools (Drill, Sander, Circular Saw), Clamps, Wood Glue, Hammer, Measurement Tools.
+3. Materials for Painting and Exterior Design (Brushes, Primer, Wooden Sticker).
+4. MDF board — 1/2‑inch thickness, Dowels.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Arcade-Machine-Tool-Set-1.jpg" alt="Arcade Machine Tool Set 1" />
+  <AssetImg path="/media/uploads/2023/12/Arcade-Machine-Tool-Set-2.jpg" alt="Arcade Machine Tool Set 2" />
+  <AssetImg path="/media/uploads/2023/12/Circular-Saw.jpg" alt="Circular Saw" />
+</div>
+
+### Detailed Woodwork Process
+
+#### Design and Cutting
+
+* I used the layout design from an [Instructables blog](https://www.instructables.com/2-Player-Bartop-Arcade-Machine-Powered-by-Pi/).
+* Using the circular saw, cut the MDF boards to size based on the layout design.
+* The side walls, with their curved edges, were particularly challenging, requiring precision and patience.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Arcade-Machine_Dimensions.png" alt="Arcade Machine Dimensions" />
+  <AssetImg path="/media/uploads/2023/12/Wood-Cutting-Dimension.jpg" alt="Wood Cutting Dimension" />
+</div>
+
+#### Assembly and Gluing
+
+* Dowels were used to align and strengthen the joints between different parts.
+* I applied wood glue generously and used clamps to hold the pieces together, allowing ample time for the glue to set.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Wood-Glue.png" alt="Wood Glue" />
+  <AssetImg path="/media/uploads/2023/12/Glue-Structure.jpg" alt="Glue Structure" />
+  <AssetImg path="/media/uploads/2023/12/Arcade-Structure-Glue-1.jpg" alt="Arcade Structure Glue" />
+  <AssetImg path="/media/uploads/2023/12/Arcade-Structure-Glue-2.jpg" alt="Arcade Structure Glue" />
+  <AssetImg path="/media/uploads/2023/12/Arcade-Structure-Glue-3.jpg" alt="Arcade Structure Glue" />
+</div>
+
+#### Building the Control Panel
+
+* The control panel required meticulous design, ensuring enough space for two players.
+* I drilled holes for the buttons and joystick, testing their placement for ease of play.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Control-Panel-Drill-Bit.png" alt="Control Panel Drill Bit" />
+  <AssetImg path="/media/uploads/2023/12/Control-Panel-Drills.jpg" alt="Control Panel Drill Hole" />
+  <AssetImg path="/media/uploads/2023/12/Control-Panel.png" alt="Control Panel Layout" />
+</div>
+
+### Final Touches
+
+#### Painting (actually only Priming)
+
+* I chose a primer to prepare the surface, followed by a wooden sticker for a polished look.
+* The choice of a neutral color scheme was intentional, allowing for future customization.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Arcade-Console-Priming-Finished.jpg" alt="Arcade Console Priming Finished" />
+  <AssetImg path="/media/uploads/2023/12/Arcade-Console-Priming.jpg" alt="Arcade Console Priming" />
+</div>
+
+#### Stickers
+
+* Wooden stickers are used only for the Control Panels to give a wooden feel back after priming.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Console-Stickers-1.jpg" alt="Console Stickers 1" />
+  <AssetImg path="/media/uploads/2023/12/Console-Stickers.jpg" alt="Console Stickers" />
+</div>
+
+#### Wiring and Electronics Installation
+
+* Organizing and neatly routing the wires was crucial for both aesthetics and functionality.
+* I ensured easy access to the control panel for future maintenance.
+
+<div className={styles.gallery}>
+  <AssetImg path="/media/uploads/2023/12/Arcade-Wiring-Connections-1.png" alt="Arcade Wiring Connections Back" />
+  <AssetImg path="/media/uploads/2023/12/Arcade-Wiring-Connections.png" alt="Arcade Wiring Connections Control Panel" />
+</div>
+
+#### Lighting and Aesthetics
+
+* The console's lighting was an essential element. I cut out letters from the wooden sticker and positioned a tube light behind them for a glowing effect.
+* The lighting not only added to the visual appeal but also brought the console to life.
+
+<AssetImg path="/media/uploads/2023/12/Arcade-Lighting.jpg" alt="Arcade Lighting" />
+
+# Conclusion
+
+The final product is a testament to the blend of nostalgia and modern technology—a **2‑player Arcade Gaming Console** that brings endless hours of joy. This journey has been immensely rewarding, and I hope it inspires you to create your own gaming masterpiece!
+
+**Happy gaming!**

@@ -32,7 +32,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'navinsubramani', // Usually your GitHub org/user name.
-  projectName: '', // Usually your repo name.
+  projectName: 'boringengineer-site', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -54,7 +54,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/navinsubramani',
+            'https://github.com/navinsubramani/boringengineer-site/tree/main/boringengineer',
         },
         blog: {
           showReadingTime: true,
@@ -65,7 +65,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/navinsubramani',
+            'https://github.com/navinsubramani/boringengineer-site/tree/main/boringengineer',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
