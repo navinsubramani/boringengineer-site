@@ -3,7 +3,6 @@
 This repository contains the source code for the boringengineer website, which is built using Docusaurus, a modern static website generator. The site serves as a personal platform for me to share his experiences in engineering, technology, and life.
 
 # To Do (12 hours)
-- [ ] Port all the blogs from the old site to this new Docusaurus site. This will ensure that all my previous writings are accessible in the new format. (20 mins per blog - 7 hours)
 
 - [ ] Add a DIY section to showcase my projects and experiments. This section should include detailed descriptions and images of my work. (3 hours)
 

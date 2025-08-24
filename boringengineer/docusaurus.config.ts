@@ -98,7 +98,6 @@ const config: Config = {
         {to: '/blog', label: 'Read-My-Blogs', position: 'left'},
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Do-It-Yourself',
         },
