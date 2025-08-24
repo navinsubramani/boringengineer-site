@@ -2,13 +2,16 @@
 
 This repository contains the source code for the boringengineer website, which is built using Docusaurus, a modern static website generator. The site serves as a personal platform for me to share his experiences in engineering, technology, and life.
 
-# To Do (12 hours)
+This repository contains details for two main services:
+1. **Boring Engineer Site**: This is under `/boringengineer` directory and contains the source code for the main website. This webiste is built using Docusaurus and includes blog posts, project documentation, and other content. It does not include the large media files, which are hosted separately.
+2. **nginx-webserver**: This is under `/nginx` directory and contains the configuration files for the nginx web server that hosts the boringengineer media assets.
 
-- [ ] Add a DIY section to showcase my projects and experiments. This section should include detailed descriptions and images of my work. (3 hours)
+Note: `/docs` contains some design files used to create the website logo and other graphics.
 
-- [ ] Create redirects for the failed links from the old site to the new site. This will ensure that visitors can still access the site even if the content is not moved or broken. (2 hours)
+# Getting Started
 
-# Take Down Old Site (5 hours)
+To get started with the boringengineer website or nginx server, follow the instructions in the respective README files located in each directory.
 
-- [ ] Once the new site is fully functional. Take down the old site domain and redirect to the new site using cloudflare. This will ensure that all traffic is directed to the new site and that users are not confused by the old content.
-- [ ] Unsubscribe from the old site domain and remove it from the hosting provider. This will free up resources and prevent any confusion about which site is the official one.
+# Purpose
+
+This repo is made public so fellow engineers can take inspirations from the site or provide feedback to improve the content and structure. Feel free to explore the code, contribute, or suggest improvements.

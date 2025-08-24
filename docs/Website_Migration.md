@@ -1,0 +1,30 @@
+
+## Migration Testing
+
+Below links should be mapped properly when migrating form wordpress to Docusaurus.
+
+1. [Home Site](https://boringengineer.com/)
+2. [DIY Mandir Project](https://boringengineer.com/2024/09/01/diy-guide-making-of-a-mandir/)
+3. [Arcade Game Console](https://boringengineer.com/2023/12/04/diy-2-player-arcade-console/)
+4. [pi Garden](https://boringengineer.com/2023/09/08/pi-controlled-desktop-garden-diy-guide/)
+5. [Raised Bed Greenhouse](https://boringengineer.com/2023/06/08/diy-guide-raised-bed-greenhouse/)
+6. [AI Talking to AI](https://boringengineer.com/2023/04/30/chitchatgpt/)
+7. [LabVIEW Script Editor](https://boringengineer.com/2022/02/06/labview-script-interpreter/)
+8. [G Interface](https://boringengineer.com/2020/05/03/labview-g-interfaces-solving-a-decade-old-problem/)
+9. [L for London](https://boringengineer.com/2019/12/19/l-for-london/)
+10. [Semiconductor Open Source](https://boringengineer.com/2019/12/19/accelerating-post-silicon-validation-through-open-source-community/)
+11. [Bent Wire Phobia](https://boringengineer.com/2019/10/22/the-bent-wire-phobia-labview/)
+12. [Iron Man](https://boringengineer.com/2019/05/26/what-software-engineers-should-learn-from-iron-man/)
+13. [Cliffs of Ireland](https://boringengineer.com/2019/05/03/cliffs-of-ireland/)
+14. [A for Amsterdam](https://boringengineer.com/2018/10/28/a-for-amsterdam/)
+15. [B for Brussels](https://boringengineer.com/2018/10/28/b-for-brussels/)
+16. [LabVIEW Web Monitoring](https://boringengineer.com/2018/10/21/web-monitor-and-control-application-using-ni-systemlink-apis/)
+17. [NI Web Tech](https://boringengineer.com/2018/07/29/ni-web-technology-monitor-and-control-systems/)
+18. [NXG WebVI](https://boringengineer.com/2018/07/15/develop-deploy-host-webvi/)
+19. [Embed in WebVI](https://boringengineer.com/2018/07/15/webvi-accessing-and-embedding-web-service-and-resources/)
+20. [P for Paris](https://boringengineer.com/2018/06/06/une-journee-a-paris/)
+21. [LabVIEW Class Accessors](https://boringengineer.com/2018/06/05/organizing-class-accessors-in-labview-object-oriented-programming/)
+22. [Malleable VIs](https://boringengineer.com/2018/06/02/make-efficient-reuse-with-malleable-vi/)
+23. [Work from Village](https://boringengineer.com/2018/03/31/work-from-village/)
+24. [Category: NI LabVIEW](https://boringengineer.com/category/ni-labview/)
+25. [Category: Travel](https://boringengineer.com/category/travel/)
