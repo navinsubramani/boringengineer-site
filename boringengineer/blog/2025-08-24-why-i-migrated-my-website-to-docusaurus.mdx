@@ -1,0 +1,42 @@
+---
+slug: why-i-migrated-my-website-to-docusaurus
+title: Why I Migrated My Website Stack - Docusaurus & Home Hosting for Maximum Flexibility
+authors: navinsubramani
+tags: [DIY, Food for Thought, GenAI]
+---
+
+There are lot of website building platforms out there—WordPress, Wix, Squarespace, and more. For years, I used WordPress hosted on Bluehost. It worked, but over time, I felt constrained, unwanted expenses piling up, and a lack of control over my content and how it was served, as well as they are not optimized for AI writing tools. So I made the call: I downsized—traded the bloat for Docusaurus, and migrated from Bluehost to my home lab. Now, I write in plain text, serve my site exactly how I want, and control every piece of the pipeline. Here's how simplifying gave me more.
+
+<!--truncate-->
+
+## System Diagram of My New Website Stack
+<AssetImg path="//media/boringengineer_website_stack.png" alt="Oak Finial" />
+
+- **Docusaurus**: A static site generator built by Meta, Docusaurus lets me write in Markdown and generates a fast, SEO-friendly website. It's lightweight, easy to customize, and perfect for a blog or documentation site. Plus, it plays well with AI writing tools, making content creation smoother.
+- **Home Hosting**: By hosting my site on a server in my home lab (literally a raspberry pi), I cut costs and gained full control. No more yearly hosting fees or restrictions imposed by third-party providers. I can tweak server settings, manage backups, and ensure my site runs exactly how I want. Having a uptime is not guaranteed, but it's not so critical for my personal blog as well as I did not have downtime scenerio in months now.
+- **GitHub for Version Control**: I use GitHub to manage my site's source code. This allows me to track changes, collaborate if needed, and deploy updates seamlessly. Plus, now I am able to publish the source code of my blog for others to learn from or replicate. [Source Code Link](https://github.com/navinsubramani/boringengineer-site)
+- **CI/CD Pipeline**: I set up a simple pipleine, where its manual but I can run couple of commands that will take the latest content, build the static site using Docusaurus, and deploy it to my home server. This keeps the process efficient and reduces the chance of errors.
+- **Hosting**: For hosting, I use my homelab server stack. You can follow it [here](/docs/projects/homelab).
+
+## Why I Made the Switch
+
+1. **Cost Savings**: Hosting my own site eliminates recurring fees. Docusaurus is free and open-source, so no licensing costs.
+2. **Control**: I have full control over my content, design, and server configuration. No more limitations imposed by hosting providers.
+3. **Simplicity**: Docusaurus is straightforward to use. Writing in Markdown is easy, and the static site generation means faster load times and better performance.
+4. **AI generation Friendly**: Docusaurus works well with AI writing tools, making content creation more efficient and enjoyable.
+5. **Learning Experience**: Managing my own server and site stack has been a great learning experience, enhancing my skills in web development and server management.
+
+**NOTE**: To create a blog or a update to the website, It took me around 4-6 hours initially with wordpress, considering all the themes, content writing, media management, etc. Now, with Docusaurus, I can draft a post in Markdown in about 1 hour, and deploying it is just a matter of running a couple of commands. The simplicity of the workflow has made content creation much more efficient.
+
+## TIPS for Others while Migrating
+
+- **Plan Your Migration**: Before switching, outline your current site's structure and content. This will help you map out how to transfer everything smoothly. I took inspiration from the [Docusaurus Showcase](https://docusaurus.io/showcase) for the structure and design of my site.
+- **Backup Everything**: Ensure you have backups of your existing site, including databases, media files, and any custom code. This will safeguard against data loss during the migration process.
+- **Media Migration: First**: I started by migrating all my media files (images, videos, etc.) to my new hosting setup. This ensured that all visual content was in place before moving the text content. Also, I seperated the media files into a seperate NGINX server, and kept Docusaurus to serve only the text content.
+- **Text Migration: Next**: I then focused on the transferring my blogs and pages. I converted my wordpress posts to Markdown format using ChatGPT, which made the process much faster. I then organized them into the appropriate folders in my Docusaurus project.
+- **Test the Important Links**: I made a list of links that I should ensure are working post-migration. Broken links can hurt SEO and user experience.
+- **Deleted the Bluehost Server and Switched to HomeHosting**: After ensuring everything was working perfectly on my home server, I cancelled my Bluehost server subscription, and changed the nameservers to point to my server through Cloudflare.
+
+## Final Thoughts
+
+This migration tools me around 15 hours in total, spread over a few weekends. The result? A much more satisfying website experience that I control completely. If you're feeling constrained by your current website setup, consider making the switch to a static site generator like Docusaurus and hosting it yourself. The benefits in cost savings, control, and simplicity are well worth the effort. Happy blogging!
