@@ -1,0 +1,63 @@
+---
+slug: make-efficient-reuse-with-malleable-vi
+title: Make efficient reuse with Malleable VI in LabVIEW
+authors: navinsubramani
+tags: [LabVIEW]
+---
+
+I'm pretty sure most of us are good at developing reusable VIs in LabVIEW and using it. One pain point that developers face is - how to manage the _VI's that have same functionality and different in datatype_. This blog will explain how Malleable VI's can help us to solve this problem efficiently.
+
+<!-- truncate -->
+
+Let's say we want to develop reusables for _'Calculating Array Differences'_ for the double and I32 array. Then we would develop 2 VI's as shown below,
+
+<AssetImg path="/media/uploads/2018/06/Array-Difference.png" alt="Code snippet of the reusable VIs with different data types" />
+*Code for Calculate Array Difference of 1D double and I32 element*
+
+Developing reusables is the first part but how to organize and let the user access them easily is also important. One option is to use [polymorphic VI's.](http://zone.ni.com/reference/en-XX/help/371361P-01/lvconcepts/polymorphic_vis/) Developers can [build a polymorphic VI](http://zone.ni.com/reference/en-XX/help/371361P-01/lvhowto/using_polymorphic_vis/) and group VI's in them as shown below,
+
+<AssetImg path="/media/uploads/2018/06/Array-Difference-Polymorphic.png" alt="Polymorphic VI window that shows the all the VIs with only difference in datatypes" />
+*Array Difference Polymorphic VI*
+
+This doesn't solve the problem but only organizes the problem. Maintaining several VI's is only going to make things worse. What if we could create one VI that adapts its behavior based on the datatype (something similar to LabVIEW native add function)? No, I'm not talking about the [GenericAreGo = True](https://lavag.org/topic/15870-create-your-own-generic-vi-like-randomize-1d-array/)
+
+## Malleable VI to the rescue
+
+Malleable VI is a new VI type with .vim extension, its terminals can adapt to its input data type when called from a calling VI. As Malleable VIs are always inline, when dropped into the calling VI and connected to an input datatype, LabVIEW could perform a type propagation and confirm the data type adaption. This is what NI had to [say](http://zone.ni.com/reference/en-XX/help/371361P-01/lvconcepts/malleable_vis_intro/).
+
+If we can translate the Malleable VI to the previous example, We need to [create](http://zone.ni.com/reference/en-XX/help/371361P-01/lvhowto/building_malleable_vis/) one malleable VI and that's it!
+
+<AssetImg path="/media/uploads/2018/06/Array-Difference-Malleable-VI.png" alt="Malleable VI code snippet for calculating array difference" />
+*Array Difference Malleable VI*
+
+When called 'Calculate Array Malleable VI' will adapt to the input data type. In the below VI notice that there is no [coercion dot](http://zone.ni.com/reference/en-XX/help/371361P-01/lvconcepts/coercion_dots/)
+
+<AssetImg path="/media/uploads/2018/06/Calling-Malleable-VI.png" alt="Calling Malleable VI code snippet for calculating array difference" />
+*Calling Malleable VI*
+
+But if the Malleable VI doesn't support a certain data type, then LabVIEW type propagation will identify it and makes a broken wire in the calling VI. In our example, connecting string datatype will not work as 'subtract' function doesn't support string data type
+
+<AssetImg path="/media/uploads/2018/06/Calling-Malleable-VI_broken.png" alt="Broken when calling Malleable VI code" />
+*Broken when calling Malleable VI*
+
+The challenge here is logic\code cannot be data type independent always. What if we can make the Malleable VI to intelligently choose the one of many logic based on the input data type? NI LabVIEW have a solution for this!
+
+## Welcome to the Magic Case structure!
+
+Most people call this 'Type Specialization Structure' - In each case of this structure user can write a logic assuming the input data type. During type propagation, LabVIEW will choose a case that doesn't break. For example, if we need to make the malleable VI support 'Calculate Array Difference' for a string datatype do the below,
+
+<AssetImg path="/media/uploads/2018/06/Type-Specialization-Structure.png" alt="Code snippet for supporting string datatype using Type Specialisation Structure" />
+*Supporting string datatype using Type Specialisation Structure*
+
+In the above image, we have two cases, one supports the numeric datatype (left) and another supports string datatype (right). In the right image, 'string to decimal number' function breaks the wire as the input is number now but when a string datatype is inputted to this VI, right image will not break (left side case will now break).
+
+<AssetImg path="/media/uploads/2018/06/Calling-Malleable-VI_works.png" alt="Code snippet for calling the type specialization VI" />
+*Calling VI supports both numeric and string*
+
+Now we can [develop a single VI with many logic for different data types](/blog/make-efficient-reuse-with-malleable-vi). Isn't that powerful? Best luck with this.
+
+## Things to remember
+
+- Malleable VI are always inline
+- Inline VI doesn't support few property nodes and so some of the property nodes cannot be used in a Malleable VI
+- Type Specialization structure is not complete - Be careful!

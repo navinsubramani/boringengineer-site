@@ -15,13 +15,13 @@ export default function Introduction() {
           <div className={styles.heroText}>
             <h2 className={styles.heroTitle}>Hi, I'm Navin Subramani</h2>
             <p className={styles.heroSubtitle}>
-              I’m the self-proclaimed <a className={styles.themeGreen} href='https://boringengineer.com/' target='_blank'>Boring Engineer</a>. Why? Because I believe doing the “boring” stuff—consistently—is what actually builds success.
+              I’m the self-proclaimed <a className={styles.themeGreen} href='https://www.linkedin.com/in/navin-subramani-92b18378/' target='_blank'>Boring Engineer</a>. Why? Because I believe doing the “boring” stuff—consistently—is what actually builds success.
             </p>
             <p className={styles.heroLine}>I’m a <a className={styles.themeGreen} href='/docs'>DIY enthusiast</a>. If I can build it or find it open-source, why would I ever buy it?</p>
             <p className={styles.heroLine}>I <a className={styles.themeGreen} href='https://github.com/navinsubramani' target='_blank'>code</a> (Copilot is my co-driver), but I’m not the type who dreams in semicolons.</p>
             <p className={styles.heroLine}>I <span className={styles.themeGreen}>read</span> anything from tech and finance to random recommendations from friends—basically whatever rabbit hole looks interesting.</p>
             <p className={styles.heroLine}>I <a className={styles.themeGreen} href='/blog'>blog</a> occasionally (when I’m not distracted by another DIY project).</p>
-            <p className={styles.heroLine}>And I absolutely <span className={styles.themeGreen}>love travelling</span> because even engineers need fresh air and new places to debug themselves.</p>
+            <p className={styles.heroLine}>And I absolutely <a className={styles.themeGreen} href='/blog/tags/travel'>love travelling</a> because even engineers need fresh air and new places to debug themselves.</p>
             <p className={styles.heroLine}>Most days, you’ll find me tinkering, learning, and creating — day in and day out.</p>
             <p className={styles.heroLine}>I built and host this site on <span className={styles.themeGreen}>my own servers</span>. Not because it’s easy, but because subscriptions are boringly expensive.</p>
             <p className={styles.heroLine}>If you’re already here, take a look around my blogs and projects. And if something sparks an idea, let’s connect—you bring the coffee, I’ll bring the code.</p>
@@ -61,7 +61,7 @@ const SKILLS: SkillBucket[] = [
     title: "Desktop",
     icon: "💻",
     items: [
-      { name: "LabVIEW Champion", logo: "/img/skill-labview.png", url: "https://www.ni.com" },
+      { name: "LabVIEW Champion", logo: "/img/skill-labview.png" },
       { name: "Python", logo: "/img/skill-python.png" },
       { name: "TestStand Architect", logo: "/img/skill-teststand.png" },
     ],

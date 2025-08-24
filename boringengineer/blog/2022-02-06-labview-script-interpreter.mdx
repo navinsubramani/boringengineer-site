@@ -1,0 +1,75 @@
+---
+slug: labview-script-interpreter
+title: LabVIEW Script Interpreter
+authors: navinsubramani
+tags: [LabVIEW, Software Engineering]
+---
+
+Script language is an extension of a programming language that can be used to control applications. Now a days engineers or even users are more productive with typing in the script to ask an application to do what they want, compared to using a complex user interface. So, there might have been times when you would have felt having a way to feed in some scripts through the application user interface to control it, rather than a bunch of buttons and enums. Well, this work was born at that moment.
+
+<!-- truncate -->
+
+## What is this LabVIEW script interpreter?
+
+This is a pet project done for fun to create a plugin-based script interpreter natively on LabVIEW. Simply, this LabVIEW script interpreter can read in lines of text and do actions. Each line is a function and the interpreter knows to execute them based on the definition that we have provided.
+
+By default, there are functions already developed that are most commonly used like Arithmetic, Logical, String, Array, if statements, for statements, popups, printing to console, and in fact comments. All as a LabVIEW plugin. You can customize them however you wanted (modify the existing function behavior) or add new functions.
+
+Below gif shows a LabVIEW application, integrated with the script interpreter to demo some of its inbuilt function capabilities
+
+<AssetImg path="/media/uploads/2022/02/LSL-script-demo_compressed.gif" alt="LabVIEW-script-interpreter-demo" />
+*Demo of a few operations like print, variables for different data types, arrays, for-loop, and if statement.*
+
+All these existing functions have python-like syntax (If you already are thinking why not use python? — Read below. But in short, these are scripts and interpreters built on LabVIEW, which means you can develop LabVIEW plugins to extend the capability and integrate it into your existing LabVIEW application seamlessly).
+
+## Customize or extend it to your application
+
+This is the fun part. The above functions are more generic for any script that let people manage, manipulate the data, and control the flow of the script. On top of this, your application will have some unique commands or requirements like calling an instrument or any device or calling an external application through APIs. You can create your own function and add them as part of the scripts.
+
+The below GIF shows how the LabVIEW script interpreter is integrated into a Temperature controller application and used as a debug console to query information about the controller.
+
+<AssetImg path="/media/uploads/2022/02/Temperature-Controller-Script_compressed.gif" alt="Temperature-Controller-Script" />
+*Temperature-Controller-Script*
+
+The above example contains user plugins to get temperature trends and status. You can also use the built-in functions say 'for loop' to continuously query the information (below GIF). This way, the debug console is not restricted to what is built by the user and can do a lot more.
+
+<AssetImg path="/media/uploads/2022/02/Temperature-Controller-loop-Script_compressed.gif" alt="Temperature-Controller-loop-Script" />
+*Temperature-Controller-loop-Script*
+
+You can create a custom function as a plugin and this interpreter will load this using a factory pattern. Some code example on how to create a plugin is provided on GitHub (linked below) and if you have questions and need more documentation, drop the request here: <a href="https://github.com/navinsubramani/LabVIEW-Script-Language/issues" target="_blank" rel="noreferrer noopener">https://github.com/navinsubramani/LabVIEW-Script-Language/issues</a>.
+
+You can do more than just create custom plugins, like you can create your own terminals or even updating the interpreter logic to your need. Because all these are open source!!
+
+## Integrate into your application in no time
+
+Alright, if you think this interpreter will help you in your application and wondering what it takes to integrate — then you need to know about just 4 APIs.
+
+<AssetImg path="/media/uploads/2022/02/LabVIEW-Script-Interpreter-APIs.png" alt="LabVIEW-Script-Interpreter-APIs" />
+*API calls that will integrate this into your application*
+
+These APIs will help you instantiate it, load the script, compile and execute it. It also comes with an output terminal that can display the errors or outputs if your function decides to display one (like the print function).
+
+More example code can be found here: <a href="https://github.com/navinsubramani/LabVIEW-Script-Language/tree/master/example" target="_blank" rel="noreferrer noopener">https://github.com/navinsubramani/LabVIEW-Script-Language/tree/master/example</a>
+
+## Source Code, Packages, Examples all in github
+
+You can find all the source code, examples, documentation on Github here: <a href="https://github.com/navinsubramani/LabVIEW-Script-Language" target="_blank" rel="noreferrer noopener">https://github.com/navinsubramani/LabVIEW-Script-Language</a>
+
+The beta package can be found here: <a href="https://github.com/navinsubramani/LabVIEW-Script-Language/releases" target="_blank" rel="noreferrer noopener">https://github.com/navinsubramani/LabVIEW-Script-Language/releases</a>
+
+Add your issues here: <a href="https://github.com/navinsubramani/LabVIEW-Script-Language/issues" target="_blank" rel="noreferrer noopener">https://github.com/navinsubramani/LabVIEW-Script-Language/issues</a>
+
+Note: This might have bugs, limitations but if you would like to improve this, please don't hesitate to fix them and send a pull request.
+
+## Some application use cases
+
+**#1** If you need to input functional logic to your application, use scripts instead of a complex User interface. The cost of creating, updating, and maintaining a module that lets users feed in the control logic through the User Interface is high. Instead, imagine if we can adopt an existing script interpreter that can receive a script through your application user interface, and control your application. This adds a lot of power to your application with less cost.
+
+**#2** Test Executives for your LabVIEW drivers or measurement can be built using scripts. Test Executives are used to building a sequence of operations/functions that perform a test and typically people like to build it in a step-by-step fashion. In LabVIEW, since the functions are G programming connected with wires, the LabVIEW VI might not be suitable for test executives. Using these scripts, Test Executive for LabVIEW functions can be built easily. The below example shows, how to create a read voltage measurement using DMM.
+
+<AssetImg path="/media/uploads/2022/02/LSL-demo-with-dmm_compressed.gif" alt="LabVIEW-script-interpreter-demo" />
+*Example to show how a command is added to control a DMM*
+
+**#3** If you would like to have a debug console in your application for advanced users where you can toggle some user preference or query application parameters or query error status or error logs — these scripts can be used.
+
+Happy scripting.....

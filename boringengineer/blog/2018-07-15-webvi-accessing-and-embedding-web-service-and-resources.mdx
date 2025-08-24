@@ -1,0 +1,59 @@
+---
+slug: webvi-accessing-and-embedding-web-service-and-resources
+title: NXG WebVI - How to access and embed web service and resources
+authors: navinsubramani
+tags: [LabVIEW]
+---
+
+We have already seen how to use [LabVIEW NXG to Develop, Build and Deploy WebVI](/blog/develop-deploy-host-webvi). In this blog, I have talked about a few more options in WebVI on how to use the online resources and embed it in your WebVI. I have also embedded some interactive examples developed using NXG WebVI here.
+
+<!-- truncate -->
+
+## NXG WebVI Front Panel page and HTML page
+
+HTML page in WebVI is the HTML view of the WebVI Front Panel. For every object that is dropped in the NXG Front Panel, an HTML code of the object and CSS property will be automatically created in the HTML page. Similarly, If we make any changes on the HTML page that will, in turn, get reflected on the NXG Front Panel (conditions apply). There are few rules to develop a UI using the HTML page:
+
+- The developer should not code within the read-only section of the HTML page
+- Object developed using the HTML page will not have its corresponding Block Diagram terminal
+- Properties of Object developed using NXG Front Panel can be edited by adding a style sheet and CSS properties
+- Functions and Events can be captured in the LabVIEW block diagram (not available until NXG 2.1) as well as in HTML page
+
+<AssetImg path="/media/uploads/2018/07/WebVIFrontPanel-1024x109.png" alt="WebVI Front Panel" />
+<AssetImg path="/media/uploads/2018/07/WebVIHTMLPage-1024x684.png" alt="WebVI HTML Page" />
+
+## Embed Web Pages using WebVI HTML
+
+We can embed any Web Page into the NXG front panel using the HTML page. For example, I have used an interesting boids algorithm GitHub page from <a href="http://anoopelias.github.io/boids/#" target="_blank" rel="noopener">http://anoopelias.github.io/boids/#</a> and embedded it into a LabVIEW NXG WebVI.
+
+<AssetIframe path="/apps/WebVIIntegrateService/AnoopsBoids.html" width="100%" height="480" />
+
+- Get the link of the web page that you need to embed.
+- Go to NXG HTML Page and in the `<body>` section create a new div and use the <a href="https://www.w3schools.com/tags/tag_iframe.asp" target="_blank" rel="noopener">iframe</a> to add the WebPage.
+
+<AssetImg path="/media/uploads/2018/07/WebVI-Iframe-1024x242.png" alt="Adding an iframe in WebVI HTML page" />
+
+## Access Images using URL
+
+LabVIEW NXG provides a **URL Image** control under the Drawing palette. Using this, we can display any images from the web (This example uses Robohash.org to display images).
+
+<AssetIframe path="/apps/WebVIIntegrateService/RobotforNames.html" width="100%" height="420" style={{background: 'white'}} />
+
+All we need to do is:
+
+- Input the URL to the indicator in the block diagram as shown below.
+
+<AssetImg path="/media/uploads/2018/07/URL-Image-Example-1024x685.png" alt="URL Image Example" />
+
+## Access WebService
+
+Using the HTTP APIs a developer can query any web services, get information and display it. For example, I used a Joke Service from <a href="http://www.icndb.com/api/" target="_blank" rel="noopener">http://www.icndb.com/api/</a> to display a random Chuck Norris joke on every click.
+
+This example uses:
+
+- HTTP APIs in WebVI (HTTP is a commonly used web protocol)
+- GET HTTP request to query for jokes
+- **Unflatten from JSON** to parse the response and display it in a string
+
+<AssetImg path="/media/uploads/2018/07/WebVI-Web-Service-1024x792.png" alt="WebVI calling a web service" />
+
+Hope this is useful :) Have fun with NI Web Technology!

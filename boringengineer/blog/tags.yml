@@ -12,3 +12,18 @@ DIY:
   label: DIY
   permalink: /diy
   description: DIY (Do It Yourself) refers to the practice of creating, building, or repairing things on your own, often using readily available materials. This tag includes articles that provide step-by-step guides, tips, and inspiration for various DIY projects, from electronics, home improvement to crafting and beyond.
+
+Food for Thought:
+  label: Food for Thought
+  permalink: /food-for-thought
+  description: Food for Thought encompasses articles that provoke reflection, inspire new ideas, or challenge existing perspectives. Under this tag, you will find thought-provoking content on a variety of topics, including technology, philosophy, culture, and personal development.
+
+GenAI:
+  label: GenAI
+  permalink: /genai
+  description: GenAI (Generative Artificial Intelligence) refers to AI systems that can generate content such as text, images, music, and more. This tag includes articles that explore the latest advancements, applications, and implications of generative AI technologies in various fields.
+
+Travel:
+  label: Travel
+  permalink: /travel
+  description: Travel encompasses articles that share experiences, tips, and guides related to exploring new destinations around the world. Under this tag, you will find content that covers various aspects of travel, including destination highlights, travel planning, cultural insights, and personal travel stories.

@@ -1,0 +1,100 @@
+---
+slug: develop-deploy-host-webvi
+title: NXG WebVI - Develop, Deploy and Host a Simple Web Game
+authors: navinsubramani
+tags: [LabVIEW]
+---
+
+National Instrument LabVIEW has grown and evolved a lot since its introduction in 1986 for Macintosh. Over time, NI has taken their graphical programming paradigm to most of the Operating systems, to real-time, to FPGAs and now to the web. Yes today you could build a neat Web Page quickly with your LabVIEW knowledge using NXG WebVI. In this blog, I will explain how to develop, deploy and host a simple Web Game using NXG WebVI.
+
+<!-- truncate -->
+
+- **Prerequisite:** No HTML, CSS, Javascript knowledge required. It's pure LabVIEW
+
+## Below 'Math web game' is purely built using NI NXG WebVI
+
+<AssetIframe path="/apps/WebVIDevelopDeploy/QuickAnswer.html" height="320" width="100%" style={{background: 'white'}} />
+
+## How to do this?
+
+<AssetImg path="/media/uploads/2018/07/WebVI-develop-deploy-and-host-1024x169.png" alt="Explaining the flow used to develop, build and deploy LabVIEW NXG WebVI" />
+*WebVI develop, deploy and host*
+
+### Develop a Web page using WebVI
+
+#### Introducing WebVI
+
+- WebVI is like a normal VI in NXG where a developer can build web pages using the available and web supported LabVIEW front panel objects and block diagram functions.
+- WebVI can be translated into an HTML+CSS+Javascript function and can be run on the browser or it can also be run within the [NXG ADE](http://www.ni.com/download/labview-nxg-2.1/7290/en/)
+- WebVI is run on a web browser using an open source runtime engine ([vireo](https://ni.github.io/VireoSDK/))
+
+#### Steps to develop a Web page
+
+- Open LabVIEW NXG
+- Select **Building Applications → Getting Started with Web Application** from the lessons — a good starting point with a default application and WebVI (System Designer preconfigured)
+- Open WebVI — this has Front Panel, Block Diagram, Icon and HTML pages. We’ll skip the HTML and Icon page for now
+- Develop the program using the Front Panel and Block Diagram (more functions arrive as NXG matures)
+- Example program screenshots below:
+
+<AssetImg path="/media/uploads/2018/07/WebVI_Game_SourceCode-1-1024x358.png" alt="Source code snippet of NXG WebVI that explains the web game" />
+*WebVI Game Source Code*
+
+- Once ready, run the WebVI in the LabVIEW NXG ADE to test
+- Now we have our WebVI ready to build!
+
+### Building web application using System Designer
+
+#### Introducing System Designer
+
+- System Designer is an important component of the LabVIEW NXG ADE and it comes by default with every NXG project
+- System Designer = NI Measurement and Automation Explorer++ and Software Library and Builds Manager++
+- It manages hardware and software in one place with **Live** and **Design** views
+- **Live View** auto-detects connected hardware
+- **Design View** lets you simulate/design the system and build software components
+
+#### Steps to build a Web application
+
+- In System Designer (Design View), find the web server with the application that contains your WebVI
+- Right-click the application and choose **Build**
+
+<AssetImg path="/media/uploads/2018/07/WebVI-System-Designer-Build.png" alt="Build the Web page using NXG System Designer" />
+*NXG System Designer Build Option*
+
+- Watch build status in the status bar (make sure the WebVI isn’t running in the ADE)
+
+<AssetImg path="/media/uploads/2018/07/System-Designer-Build-Status-1024x110.png" alt="Displaying NXG System Designer Build Status" />
+*NXG System Designer Build Status*
+
+### Host using NI Web Server
+
+#### Introducing NI Web Server
+
+- NI Web Server will serve the browser with web pages requested
+- You can host any web pages once NI Web Server is configured
+
+#### Configure NI Web Server
+
+- Open **NI Web Server Configuration** → **Summary** → **Run guided setup to select preset settings**
+
+<AssetImg path="/media/uploads/2018/07/NI-Web-Server-Configuration.png" alt="Using the NI Web Server Configuration to setup the server settings" />
+*NI Web Server Configuration*
+
+- Run the wizard with **Simple Local Access** (default port 80)
+
+#### Host the built Web application
+
+- Copy the built components into  
+  `C:\Program Files\National Instruments\Shared\Web Server\htdocs`
+
+<AssetImg path="/media/uploads/2018/07/NI-Web-Server-Hosting.png" alt="Once built, Web page should be deployed in the NI Web Server hosting folder" />
+*NI Web Server hosting folder*
+
+- Access from the browser:  
+  `http://<ipaddress>:<portnumber>/<Folder inside htdocs>/<HTML file>.html`  
+  **Example:** `http://localhost:80/MathGame/Math.html`
+
+> **Note:** To host the web app in NI SystemLink follow [this procedure](https://github.com/ni/systemlink-web-interface-template).
+
+Source Code is available on **[GitHub — Download / Contribute / provide feedback](https://github.com/navinsubramani/develop-and-deploy-WebVI)**
+
+Have fun with NI Web Technology!

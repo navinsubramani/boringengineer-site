@@ -1,0 +1,90 @@
+---
+slug: ni-web-technology-monitor-and-control-systems
+title: NI Web Technology - Monitor and Control Systems
+authors: navinsubramani
+tags: [LabVIEW]
+---
+
+In this blog, we will look into what it takes to develop the basic components required to monitor and control system developed for the desktop using NI Web Technology. In simple terms, this is all about how to move data from the LabVIEW VI to Web VI and from Web VI back to LabVIEW VI. To understand the concept better first we will look at monitoring use case (move data from LabVIEW VI to Web VI)
+
+<!-- truncate -->
+
+## Different software pieces to build the Monitor and Control Systems
+
+There are 3 components we need to get in place to achieve this and the below flow explains it.
+
+<AssetImg path="/media/uploads/2018/07/Monitoring-Windows-Application-1024x330.png" alt="Work flow diagram to build a Monitoring Windows Application" />
+*Monitoring Windows Application*
+
+The flow is from left to right: LabVIEW Web Service in the middle plays an important role that takes care of **brokering between Windows application and Web page**. The developer needs to clearly define and develop the sufficient HTTP Web Service APIs that is responsible to move data between the LabVIEW and Web. LabVIEW and WebVI then use the API's to transfer and receive the data.
+
+### Example: Monitoring a simple Temperature Controller
+
+I have embedded the quick demo of application through GIF below that shows the 3 components: LabVIEW application that generates data(in left), Web page streams the data (on right) and Web Service is shown in the LabVIEW project below.
+
+<AssetImg path="/media/uploads/2018/07/Monitor-Temperature-Controller.gif" alt="GIF demo that shows the functionality of the application" />
+*Monitor Temperature Controller*
+
+Source Code is available on **[GitHub - Download / Contribute / provide feedback](https://github.com/navinsubramani/NI-Web-Technology-Examples)**
+
+This is the example of a simple temperature controller that turns ON\OFF the heater to keep the temperature within the setpoint range. The temperature, limits and heater state data from LabVIEW VI is being continuously streamed in the Web page built on WebVI once Web Service is started. Let's dive in to see how to build this.
+
+To develop this, you need to know LabVIEW, [LabVIEW Web Service](http://zone.ni.com/reference/en-XX/help/371361K-01/lvhowto/build_web_service/), [NXG Web VI basics](/blog/develop-deploy-host-webvi/). Once learned, it will only take a few hours to develop this application. I have explained the details from a high level!
+
+### How to develop LabVIEW Web Service and use them...
+
+Like I mentioned above this is the important component where we need to define and develop the list of API required for our use case. Web Service can be created from a LabVIEW project by right-clicking the My Computer target and selecting New Web Service.
+
+<AssetImg path="/media/uploads/2018/07/LabVIEW-WebService-Project-1.png" alt="LabVIEW Web Service Project structure used to develop the Web Service" />
+*LabVIEW WebService Project*
+
+For this example, we need two API's
+
+1. **POST-Trend Data**: Responsible for pushing the data from LabVIEW application to a central server and store them in a custom Queue driver. The developer has to use the URL of this API in the LabVIEW application and send the current state of the system in a defined JSON format.
+
+   <AssetImg path="/media/uploads/2018/07/POST-Trend-Data-LabVIEW-VI-1024x382.png" alt="Source Code Snippet of the LabVIEW VI to POST Trend Data" />
+   *POST Trend Data LabVIEW VI*
+
+   Once the API URL is called from the client (LabVIEW VI here), this VI will run (receives the data and stores them in a queue driver). The API URL can be noted by right-clicking on the VI and selecting **Show Method URL...** Call the URL through HTTP methods and that will run the subsequent method in the Web Service.
+
+   <AssetImg path="/media/uploads/2018/07/HTTP-Method-URL.png" alt="LabVIEW popup to configure the HTTP Web Service URLs" />
+   *HTTP Method URL*
+
+   **Integrate the API call in the LabVIEW windows application**
+
+   As mentioned above, call the URL of **POST Trend Data** API through HTTP methods in the LabVIEW application to push the data to the server.
+
+   <AssetImg path="/media/uploads/2018/07/PUSH-data-to-server.png" alt="Source Code snippet of LabVIEW VI to PUSH data to server" />
+   *PUSH data to the server*
+
+2. **GET Trend Data**: Responsible for getting the stored data from the queue in the server to Web Page. The developer should use the URL of this API in the LabVIEW web VI to request the Web Service for the Trend data and this API, in turn, acknowledges the request by pushing the stored data from queue driver to the web page.
+
+   <AssetImg path="/media/uploads/2018/07/GET-Trend-Data-LabVIEW-VI--1024x424.png" alt="Source Code snippet of the LabVIEW VI to GET Trend Data" />
+   *GET Trend Data LabVIEW VI*
+
+   **Integrate the API call in WebVI and build it**
+
+   As explained above, use the URL of **GET Trend Data** API in the Web VI to request the data from the server and display it in the front panel.
+
+   <AssetImg path="/media/uploads/2018/07/GET-data-from-server.png" alt="Code snippet of NXG WebVI to GET data from server" />
+   *GET data from the server*
+
+I have talked about how to develop, build and deploy the Web VI [here](/blog/develop-deploy-host-webvi/) and how to use the Web Service in the WebVI [here](/blog/webvi-accessing-and-embedding-web-service-and-resources/). Once this is done you will be able to stream the data from a Web page.
+
+Note:
+
+- HTTP API methods should be developed considering [few standards](https://restfulapi.net/) (not sure if I followed them ;))
+- There is a brief tutorial by NI on how to develop, test and deploy these API's [here](http://zone.ni.com/reference/en-XX/help/371361K-01/lvhowto/build_web_service/).
+
+Once the API is built it is so easy to integrate with LabVIEW and WebVIs to move data. Hope this is helpful!
+
+**Post Credits:**
+
+Now to control the LabVIEW application from Web (move some message from Web page to LabVIEW VI) developer can follow one of the below two methods,
+
+1. **Continuous Polling approach:** LabVIEW application will call the URL of a 'Get-Command' API to query from Web Service continuously to see if there is any command available from Web Page. This is not reliable as continuous polling of 'Get-Command' has to be done and not that efficient.
+2. **On-demand approach:** LabVIEW application, in turn, can have a 'Web Service' that host a 'PUT Command' API which can be used from the Web page to post the command on demand. Here another Web Service has to be built within the LabVIEW application as well.
+
+As you can clearly see there needs to be an effort made by the developer to clearly make a decision and define the API's, develop and publish them. This can be an easier task based on developers expertise but for developers who would like to avoid this effort, can now go with using NI System Link APIs which takes care of these data brokering. Will explain this in my next blog :)
+
+[Dowload the Source Code here](https://github.com/navinsubramani/NI-Web-Technology-Examples)

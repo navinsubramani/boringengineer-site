@@ -1,0 +1,88 @@
+---
+slug: web-monitor-and-control-application-using-ni-systemlink-apis
+title: Web Monitor and Control application using NI SystemLink APIs
+authors: navinsubramani
+tags: [LabVIEW]
+---
+
+In Test and Measurement Industry, remote monitoring and control of systems is a common requirement. Whether it's for industrial automation, environmental monitoring, or any other application, having a web-based interface to monitor and control devices remotely can greatly enhance efficiency and accessibility. In this blog, we will look at how developing `web monitor and control application` is made easier through NI SystemLink APIs.
+
+<!-- truncate -->
+
+There are many ways to build this, we have talked about how to build this using [LabVIEW Web Service here](/blog/ni-web-technology-monitor-and-control-systems). The trouble with LabVIEW web service for this use case is, the developer needs to create the brokering between desktop and web application as shown below,
+
+<AssetImg path="/media/uploads/2018/07/Monitoring-Windows-Application-1024x330.png" alt="Explaining the flow to develop the control and monitor application" />
+*Monitoring Windows Application*
+
+Now using the latest NI Web Server and LabVIEW NXG Web Module, the developer can quickly set up a server and exchange data between the applications using NI SystemLink API, this bypasses developing an intermediate web service as shown below,
+
+<AssetImg path="/media/uploads/2018/10/Monitoring-Windows-application-using-SystemLink-APIs-1024x328.png" alt="Flow explaining the monitoring Windows application using SystemLink APIs" />
+*Monitoring Windows application using SystemLink APIs*
+
+By this method, the LabVIEW web service (middle) is replaced by the NI Web Server and SystemLink service. Now, All we want to do is,
+
+1. **Server:** Setup the NI Web server  
+2. **Desktop application:** Connect to the server and publish any data (to a topic) using SystemLink message APIs  
+3. **Web application:** Connect to server, subscribe and read the data from the topic using SystemLink message APIs
+
+This saves a whole lot of development time spent on API service and helps to build the control applications easily. Also, it makes the life of the novice developer easier as he doesn't want to learn about the API services and rules behind how to develop them.
+
+### Example: Monitor and Control a simple Temperature Controller
+
+This is the example of a simple temperature controller that turns ON/OFF the heater to keep the temperature within the set point range. The temperature, limits and heater state data from LabVIEW VI is being continuously published to the Web page built using [WebVI](/blog/develop-deploy-host-webvi/). I have embedded the quick demo of application through a GIF
+
+<AssetImg path="/media/uploads/2018/10/Monitor-and-Control-application-demo.gif" alt="Demo GIF explaining the control and monitor application" />
+*Monitor and Control application demo*
+
+Source Code is available on **[GitHub - Download / Contribute / provide feedback](https://github.com/navinsubramani/NI-SystemLink-APIs-Example)**
+
+Below steps explains how to build this using SystemLink APIs
+
+### Setup NI Web Server
+
+1. Open **NI Web Server Configuration** application
+2. Go to the **Summary** tab.  
+   <AssetImg path="/media/uploads/2018/10/NI-Web-Server-Configurations.png" alt="Configure the server settings using NI Web Server Configurations window" />
+   *NI Web Server Configurations*
+3. If you want to configure the server, click **Run guided setup to select preset settings**  
+   - Choose one of the settings that you want and proceed to set up the server  
+     <AssetImg path="/media/uploads/2018/10/NI-Web-Server-Guided-Setup.png" alt="Configure the server settings using NI Web Server Configurations guided setup" />
+     *NI Web Server Guided Setup*
+4. After setting up the server, note down the server URL from the **Summary** tab
+5. To restart the Web Server, go to **Control** tab and click on **Restart**  
+   <AssetImg path="/media/uploads/2018/10/Restart-NI-Web-Server-e1540111051440.png" alt="Restart NI Web Server using NI Web Server Configuration window" />
+
+   *Restart NI Web Server*
+
+### How to publish and subscribe to data?
+
+NI SystemLink contains message APIs using which applications can publish and subscribe to a topic.
+
+<AssetImg path="/media/uploads/2018/10/SystemLink-Message-APIs.png" alt="SystemLink Message APIs palette in LabVIEW" />
+*SystemLink Message APIs*
+
+Below example code snapshot shows how to Publish and Subscribe to a topic using SystemLink API (in LabVIEW as well as WebVI):
+
+- Use the URL of your NI Web Server to configure the HTTP and open SystemLink connection.  
+- Use the SystemLink reference created to subscribe to a topic, read, publish to a topic or unsubscribe from the topic.  
+  - Based on the application, use the APIs in LabVIEW VI as well as WebVI.  
+- Close the connection and destroy the HTTP configuration at the end.
+
+<AssetImg path="/media/uploads/2018/10/SystemLink-Code-Snapshot.png" alt="SystemLink Code Snapshot explaining how to publish and subscribe to a message topic (LabVIEW VI)" />
+*SystemLink Code Snapshot of LabVIEW VI*
+
+<AssetImg path="/media/uploads/2018/10/SystemLink-Code-Snapshot-of-WebVI-1024x488.png" alt="SystemLink Code Snapshot explaining how to publish and subscribe to a message topic (WebVI)" />
+*SystemLink Code Snapshot of WebVI*
+
+> **Note:** The same SystemLink connection can subscribe and publish to many topics at the same time.
+
+As shown above, use the **Publish** API to push the result to a specific topic. Then in any application that is connected to the same server, use **Subscribe** API to subscribe to the topic and **Read** API to read the results. This is as simple as reading and writing to a variable in LabVIEW and now data can be transferred between two desktop applications or between desktop and web applications seamlessly.
+
+**User Authentication for Web Access:**
+
+If you want to authenticate who can control your application, then NI Web Server provides an authentication system through which you can configure user permissions. This is quite handy if you want to have a secure system.
+
+<AssetImg path="/media/uploads/2018/10/NI-Web-Server-Authentication.png" alt="Configuring NI Web Server Authentication using NI Web Server Configuration window" />
+*NI Web Server Authentication*
+
+Hope this is helpful!

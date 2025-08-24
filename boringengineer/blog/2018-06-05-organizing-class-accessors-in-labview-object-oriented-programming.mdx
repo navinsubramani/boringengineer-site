@@ -1,0 +1,58 @@
+---
+slug: organizing-class-accessors-in-labview-object-oriented-programming
+title: Organizing Class Accessors in LabVIEW Object Oriented Programming
+authors: navinsubramani
+tags: [LabVIEW]
+---
+
+Developers working with object-oriented programming often had to create properties or class accessors for their class with 'get access \ set access \ both'. I'm not going to talk about how to make a decision on what properties to expose and with what access permission, this blog is mainly about practices that I follow for developing and organizing the class accessors.
+
+<!-- truncate -->
+
+## ReadWrite Vs GetSet
+
+I'm more of the latter kind. As LabVIEW programming is mostly done for easier instrument communication I would like to use the term Read\Write to the VI and Folders that actually interacts with the instrument. And prefer to use the term Get\Set to VI and Folders that interacts with the class.
+
+For example: Having Accessor name 'Read Serial Number' will make me think 'Is this VI reading Serial Number from Instrument?' so I prefer 'Get Serial Number' instead.
+
+Don't get biased with LabVIEW asking you to create a Read and Write Accessors ;)
+
+<AssetImg path="/media/uploads/2018/06/Create-Accessors.png" alt="Create LabVIEW class read and write accessors" />
+*Create LabVIEW class Accessors*
+
+## Must 'Make available through Property Nodes'
+
+When it comes to making accessors available through property node - I just do it. Also, LabVIEW remembers the last selection made on 'Make available through property node' option which is highlighted below.
+
+<AssetImg path="/media/uploads/2018/06/Create-Property-node-Accessors.png" alt="Create LabVIEW class read and write property node accessors" />
+*Create LabVIEW class property node access*
+
+This not only saves a bunch of code space but also makes it easier for the user to choose the property from the list.
+
+<AssetImg path="/media/uploads/2018/06/Accessor-VI-vs-Property-Node.png" alt="Code snippet explaining Property VI and Property nodes" />
+*Accessor VI vs Property Node*
+
+Another very handy use case, when we develop reference based Objects using the object reference and property node developer can access the properties. This is not possible using the Accessor VI's
+
+<AssetImg path="/media/uploads/2018/06/Accessor-VI-vs-Property-Node-for-Object-Reference.png" alt="Explaining Accessor VI vs Property Node for Object Reference" />
+*Accessor VI vs Property Node for Object Reference*
+
+*Note: If you have missed or removed 'Making available through property node' checkbox while creating accessor, and later decided to have the property node available, then you need to create a property definition folder in your class and add the accessor VI to it.*
+
+## Group similar properties using Item Settings
+
+When there is a lot of property for a class then the drop-down list from the property node will be long, this will only worsen as many child classes are written for the parent class. So, it is a duty of every developer to make sure the properties are grouped so the developer who inherits from your class doesn’t suffer.
+
+<AssetImg path="/media/uploads/2018/06/Long-Accessor-List.png" alt="Explaining how the property is listed based on class hierarchy" />
+*Long Accessor List*
+
+### How to group properties?
+
+Open the class properties (Right Click on your Class -> Properties), under 'Item Settings' expand and select the 'Property Definition Folders'\Properties then use the 'Localized Long Name' to control how the property should be displayed in the property list.
+
+Syntax : `<GroupName1>:<GroupName2>:<PropertyName>`
+
+<AssetImg path="/media/uploads/2018/06/Grouping-LabVIEW-class-accessors.png" alt="Grouping LabVIEW class accessors using class properties window" />
+*Grouping LabVIEW class accessors*
+
+Hope this is useful. Happy programming!

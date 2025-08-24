@@ -1,0 +1,86 @@
+---
+slug: the-bent-wire-phobia-labview
+title: The Bent Wire Phobia - LabVIEW
+authors: navinsubramani
+tags: [LabVIEW, Software Engineering]
+---
+
+I have to accept this - 'I have a bent wire phobia'  
+I hope it's not only me who is facing this  
+I hope everyone who uses LabVIEW wires would come across this  
+and it drives me go crazy
+
+<!-- truncate -->
+
+If someone asks me what is that one unique thing in LabVIEW that other programming languages don't have, I would say its 'The Wires'. The one things that is more flexible and scalable than our program (just a pun - not to hurt hardcore programmers ;)) The one that comes in many colors and widths. The one that carries all your data everywhere. The one thing that we don't really notice a lot.
+
+An interesting fact about LabVIEW is, you could identify if the code is written well or not by just taking a 1-sec look at it. It's Graphical and the look matters!!
+
+<AssetImg path="/media/uploads/2019/10/Spagetti-Code-in-LabVIEW-1024x658.png" alt="LabVIEW wires" />
+*Have you judged the above code???*
+
+> Think when you have to debug a code written by another developer. You are tracking down an issue several levels into the programs. You feel you are almost there. It's nearing Friday evening so you are about to knock the issue down and go home happily. And then you landed on something like the one above.
+>
+> Welcome to Bent Wire Phobia!!!
+
+As much as we talk about Object-Oriented Programming skills, Actor Framework skills, Design Pattern skills, we also wanted to talk about our 'Wiring Skills'
+
+> Let's talk about your 'Wiring Skills'?
+
+Wiring is important thing to learn in LabVIEW. You do only little but makes your programming so much better. It makes your code readable, debuggable and provides an opportunity to make it better later.
+
+It's not that complicated to make your code look better, only a few rules that you should follow at the start and it soon becomes muscle memory.
+
+#### 1. Always keep your error wires straight
+
+<AssetImg path="/media/uploads/2019/10/Straight-Error-Wire.png" alt="Keep error wire straight" />
+*Keep error wire straight!!!*
+
+Whatever happens with other functions, always make sure that you have error wires straight. Error wire passes through all major functions and strictly having them straight will make sure your code flow lies horizontal and doesn't deviate a lot. (If your program requires you to have two error lines and then merge it at the end - go for it please)
+
+Error wire is sorted out, but what about other wires?
+
+#### 2. Data Cluster for rescue
+
+Each function has inputs and outputs. Let's not try to sneak them from one part of the program to another, a lot of wires will easily make the program spaghetti. This is where Data Cluster is very useful. You can bundle all your variables into a data cluster (single wire) and unbundling them only when you want the data in the program and bundling the result back into the data cluster.
+
+It's like keeping all your books organized in a shelf and taking them out to read when needed and putting them back once used.
+
+<AssetImg path="/media/uploads/2019/10/Data-Cluster-1024x463.png" alt="Bundling the variables into data cluster" />
+*Bundling the variables into data cluster*
+
+Now that we have created data clusters to group data's how better we can use them?
+
+#### 3. Shift registers, modular cases for shorter wires
+
+Don't give an opportunity for your program to grow wider - There will be long/lengthy LabVIEW wires that go from left to right and difficult to track.
+
+You can modularize your program into separate cases using a state machine. The error structure and data cluster can be shared across all the cases by using the case structure. Similar to error case you can have the data cluster also straight in all the cases
+
+<AssetImg path="/media/uploads/2019/10/image-3.png" alt="LabVIEW wires" />
+
+> As a biginner, even if one of the case was not managable - thats Ok! your other cases would be neat as they are seperate and you can any time come to bad case and clean them up!
+
+You could use some out-of-box state machine architecture like [JKI state machines](https://resources.jki.net/state-machine) to implement this quickly.
+
+#### 4. Bundle and Unbundle rules
+
+Let's try at max to use only one bundle/unbundle on the data cluster per case. So, all data comes from one single place and goes back to one single place.
+
+<AssetImg path="/media/uploads/2019/10/image-1.png" alt="" />
+<AssetImg path="/media/uploads/2019/10/image-2.png" alt="" />
+
+Also, one other practice that you can follow which might look silly but it's my favorite is - Have the wire that is connecting data cluster to bundle/unbundle uniform. I used to always have the wire from data cluster to bundle/unbundle be vertical to edges of the bundle/unbundle functions. This will make all the cases look uniform when scrolling.
+
+<AssetImg path="/media/uploads/2019/10/image-3.png" alt="" />
+
+#### 5. Avoid wire crossings
+
+LabVIEW wires crossing is a difficult one to avoid. We can't achieve this always but if we can do it we will attain the ultimate peace ✌. A lot of cross wires kills readability and makes it hard to branch from wires. There is no one way to avoid this but there are few simple practices that you can follow,
+
+- Be intelligent/uniform in assigning terminals for your SubVI: Like how error terminals at the bottom and class objects/reference data at the top terminal helps wire between VI's easier. Similarly, common controls (left & bottom) and indicators (right & top) that are present in multiple VI's should be wired to the same terminal patterns so it makes it easier to connect the wires across these VI's.
+- Parallel Tracks: If the data output of your VI is going into a data cluster, then make sure the bundle order and the output from your subVI order is same
+- Using Subcluster/Objects: Using cluster for VI in and out will reduce the wire density in your program. Group data based on functionality into a cluster.
+- Create SubVI: If there are a lot of wires around, then it means you are trying to do manipulation in a single VI. Look into making your code modular into SubVI's which will also reduce the wire density.
+
+These suggestions will not help make your code cool in one go but if you start following them slowly you will figure out new ways based on your coding style to manage your wires!!! [#NoMoreBentWirePhobia](/blog/the-bent-wire-phobia-labview)
