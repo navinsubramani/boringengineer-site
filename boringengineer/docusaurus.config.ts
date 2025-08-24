@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // Custom Fields are provided to your site via `useDocusaurusContext`
 // ASSETS_BASE is used to point to the assets server for images and other static content
-const ASSETS_BASE = process.env.ASSETS_BASE ?? "https://siteassets.auxon.in";
+const ASSETS_BASE = process.env.ASSETS_BASE ?? "https://assets.boringengineer.com";
 
 const config: Config = {
   title: 'Boring Engineer',
@@ -98,6 +98,7 @@ const config: Config = {
         {to: '/blog', label: 'Read-My-Blogs', position: 'left'},
         {
           type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Do-It-Yourself',
         },
