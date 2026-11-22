@@ -7,7 +7,7 @@ tags: [LabVIEW, Software Engineering]
 
 LabVIEW G Interfaces is a new feature introduced in LabVIEW 2020. It is a decade-old problem that has been solved by NI with this feature. This blog post will explain the problem and how G Interfaces solve it.
 
-<!-- truncate -->
+{/* truncate */}
 
 ### Before G Interfaces
 

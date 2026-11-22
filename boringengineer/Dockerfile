@@ -1,5 +1,5 @@
-# Use current LTS (Node 20) — Node 18 is EOL
-FROM node:20-alpine
+# Use current LTS (Node 24) — Node 20 reached EOL in April 2026
+FROM node:24-alpine
 
 WORKDIR /app
 
