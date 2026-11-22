@@ -31,8 +31,8 @@ export default function Introduction() {
           <div className={styles.heroImageGrid}>
             <div className={styles.heroImageRowTop}>
               <img
-                src={require('@site/static/img/navinsubramani_intro_page.jpg').default}
-                alt="Navin at Paris"
+                src={require('@site/static/img/semiconwest_2026_california_testvision_navinsubramani_1.jpg').default}
+                alt="Navin presenting at Test Vision Symposium, SEMICON West 2026"
                 className={styles.heroImageRect}
               />
             </div>
