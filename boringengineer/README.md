@@ -10,6 +10,12 @@ powerShell
    ```bash
    docker build -t boringengineer-site:latest .
    ```
+   To enable PostHog analytics (US Cloud), use the build script, which reads the PostHog project token from a local `.env` file (gitignored and dockerignored, so it is never committed or baked into the image). Without a token, the site builds with analytics disabled.
+   ```bash
+   cp .env.example .env      # once, then fill in POSTHOG_KEY (and REGISTRY if pushing)
+   ./build-image.sh          # build
+   ./build-image.sh --push   # build, tag and push to $REGISTRY
+   ```
 4. **Run Docker Container**: Run the Docker container to start the site.
    ```bash
    docker run --rm -p 3000:3000 boringengineer-site:latest

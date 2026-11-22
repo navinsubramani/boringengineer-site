@@ -8,6 +8,11 @@ import type * as Preset from '@docusaurus/preset-classic';
 // ASSETS_BASE is used to point to the assets server for images and other static content
 const ASSETS_BASE = process.env.ASSETS_BASE ?? "https://assets.boringengineer.com";
 
+// PostHog analytics. The project key is supplied at build time (never committed) so that
+// clones/forks of this public repo don't send their traffic to the site's PostHog project.
+// When POSTHOG_KEY is unset, the plugin is not loaded at all. It also never runs in `npm start`.
+const POSTHOG_KEY = process.env.POSTHOG_KEY;
+
 const config: Config = {
   title: 'Boring Engineer',
   tagline: 'Personal site of Navin Subramani, where Navin blogs and shares his experiences in engineering, tech, and life.',
@@ -48,6 +53,22 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  plugins: [
+    ...(POSTHOG_KEY
+      ? [
+          [
+            'posthog-docusaurus',
+            {
+              apiKey: POSTHOG_KEY,
+              appUrl: 'https://us.i.posthog.com', // US Cloud
+              enableInDevelopment: false,
+              person_profiles: 'identified_only', // anonymous visitors only, no person profiles
+            },
+          ],
+        ]
+      : []),
+  ],
 
   presets: [
     [
